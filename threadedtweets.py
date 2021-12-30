@@ -12,12 +12,11 @@
 import sys
 from twython import Twython
 import datetime
-import sys
 import json
 import os
 
-# your twitter consumer and access information goes here
-# note: these are garbage strings and won't work
+# Twitter API strings (consumer/access)
+# Note:These are garbage strings and won't work
 apiKey = 'pog4sjsAfk3k3gL2ejaRaa'
 apiSecret = 'asdkljlkadjgklnreoighrevn3oru2938ry32'
 accessToken = '371868721-RsodgvnesfweweFEFseCsec'
@@ -27,11 +26,13 @@ accessTokenSecret = 'CSDBJDRW383fcjqdsdcn231pfldmaa'
 LASTTWEETFILE = 'FULL PATH TO FILE' #e.g. - /home/user/lasttweet.txt
 
 #-------------------------------------------------
-# Where we define what we want to tweet
+# Where we define what we want to tweet into TWEETSTRING
 #
 # TWEETSTRING = what you want to tweet. can be modified to be anywhere in case you're doing things before generating the tweet's words
 # e.g. - getting a date duration or needing a dynamic variable [uploading something to hosting site with an URL returned]
 # in this example, we'll get the duration of time since Herman Cain was murdered - 7/30/2020 10:26AM
+# NOTE: There is no character count in this, so make sure it sticks within the 280 character limit
+# see: https://developer.twitter.com/en/docs/counting-characters
 
 data1 = datetime.datetime.now()  #day today
 data2 = datetime.datetime(2020,7,30,10,26) #date and time the Zombie Cain account tweeted he was killed
@@ -60,6 +61,7 @@ IMAGEFILE = 'FULL PATH TO IMAGE' # e.g. - /home/user/image.jpg
 PHOTO = open(IMAGEFILE, 'rb')
 response = api.upload_media(media=PHOTO) #upload image, get 'response' from twitter which is needed (response['media_id'])
 
+#TWEET IT - api.update_status()
 if len(OLDTWEET) > 0:
     a = api.update_status(status=TWEETSTRING, in_reply_to_status_id=OLDTWEET, media_ids=[response['media_id']]) #in_reply_to_status_id = thread
 else:
