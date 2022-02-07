@@ -1,6 +1,6 @@
 # smithsbot
-by Smiths
+by Smiths (@quasirealsmiths)
 
-just a repo of some of the twython stuff done for automated tweets, mainly used/tested @smithsbot_ (https://twitter.com/smithsbot_/)
+just a repo of some of the twython stuff done for automated tweets
 
 in here be messy and shitty but functional code
